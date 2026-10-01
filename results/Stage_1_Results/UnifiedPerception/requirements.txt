@@ -1,0 +1,29 @@
+# UnifiedPerception runtime dependencies.
+# Versions are pinned to the known-good stack this package was validated against
+# (Python 3.12, CUDA 12.4). setup.sh installs these into a local ./.venv so the
+# package never reuses a sibling repo's environment.
+
+# PyTorch CUDA 12.4 wheels come from PyTorch's own index.
+--extra-index-url https://download.pytorch.org/whl/cu124
+
+torch==2.6.0
+torchvision==0.21.0
+
+# DINOv2 backbone (AutoModel.from_pretrained) + tokenizer utils.
+transformers==4.48.0
+huggingface-hub==0.36.2
+
+# Object detection neck+head (YOLO26) used by the vendored adapter pipeline.
+ultralytics==8.4.104
+
+# Video decode (frame sampler) + image ops.
+decord==0.6.0
+opencv-python==5.0.0.93
+numpy==2.4.4
+Pillow==12.2.0
+
+tqdm==4.69.0
+
+# Bundled static ffmpeg so annotated/combined overlays work without a system
+# ffmpeg install (see unified_perception._ensure_local_env).
+imageio-ffmpeg==0.5.1

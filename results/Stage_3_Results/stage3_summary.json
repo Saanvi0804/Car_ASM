@@ -1,0 +1,30 @@
+{
+  "stage": "Stage 3 - Selective Temporal Token Reuse Backbone Prototype",
+  "dataset": "WoodScape",
+  "model": "DINOv2 ViT-S/14",
+  "model_id": "facebook/dinov2-small",
+  "resolution": "640x640",
+  "patch_grid": "45x45",
+  "patch_tokens": 2025,
+  "embedding_dimension": 384,
+  "cameras": [
+    "FV",
+    "RV",
+    "MVL",
+    "MVR"
+  ],
+  "pairs_per_camera": 32,
+  "change_detector": "mean absolute RGB difference per 14x14 patch",
+  "pixel_diff_threshold": 0.08,
+  "stage2_reference_cosine": 0.95,
+  "method": "First frame full DINOv2; subsequent frame uses CLS + changed patch tokens through the transformer and reuses previous representations for stable patch positions.",
+  "downstream_heads": "Not run in this backbone-only prototype; detection/action integration should use the reconstructed features in the next evaluation step.",
+  "important_limitation": "This is a reduced-token approximation to global DINOv2 attention. Stable tokens are not recomputed even though global attention can allow changed tokens to influence them.",
+  "outputs": [
+    "stage3_token_reuse_results.csv",
+    "stage3_summary.csv",
+    "stage3_threshold_sweep.csv",
+    "changed_patch_mask.png",
+    "threshold_sweep.png"
+  ]
+}

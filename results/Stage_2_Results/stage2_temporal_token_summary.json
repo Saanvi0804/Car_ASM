@@ -1,0 +1,192 @@
+{
+  "stage": "Stage 2 - Temporal DINOv2 Token Redundancy",
+  "dataset": "WoodScape",
+  "cameras": [
+    "FV",
+    "RV",
+    "MVL",
+    "MVR"
+  ],
+  "model": "DINOv2 ViT-S/14",
+  "model_id": "facebook/dinov2-small",
+  "input_resolution": "640x640",
+  "patch_grid": "45x45",
+  "patch_tokens": 2025,
+  "feature_dimension": 384,
+  "pairs_per_camera": 8,
+  "cosine_thresholds": [
+    0.9,
+    0.95,
+    0.98,
+    0.99
+  ],
+  "total_pairs": 32,
+  "interpretation": {
+    "stable_percent": "Percentage of corresponding patch tokens with cosine similarity above the selected threshold.",
+    "actual_compute_reduction": false,
+    "actual_speedup_measured": false,
+    "purpose": "Measure temporal redundancy as evidence for potential token reuse."
+  },
+  "summary": [
+    {
+      "camera": "FV",
+      "cosine_threshold": 0.9,
+      "stable_percent": 68.28395061728395,
+      "stable_std": 6.083830938606209,
+      "mean_cosine": 0.890134260058403,
+      "median_cosine": 0.9534582644701004,
+      "mean_relative_l2": 0.3883028104901314,
+      "median_relative_l2": 0.30290357768535614
+    },
+    {
+      "camera": "FV",
+      "cosine_threshold": 0.95,
+      "stable_percent": 52.592592592592595,
+      "stable_std": 6.681308631918358,
+      "mean_cosine": 0.890134260058403,
+      "median_cosine": 0.9534582644701004,
+      "mean_relative_l2": 0.3883028104901314,
+      "median_relative_l2": 0.30290357768535614
+    },
+    {
+      "camera": "FV",
+      "cosine_threshold": 0.98,
+      "stable_percent": 29.567901234567902,
+      "stable_std": 5.824693825216123,
+      "mean_cosine": 0.890134260058403,
+      "median_cosine": 0.9534582644701004,
+      "mean_relative_l2": 0.3883028104901314,
+      "median_relative_l2": 0.30290357768535614
+    },
+    {
+      "camera": "FV",
+      "cosine_threshold": 0.99,
+      "stable_percent": 13.425925925925926,
+      "stable_std": 3.817368140329352,
+      "mean_cosine": 0.890134260058403,
+      "median_cosine": 0.9534582644701004,
+      "mean_relative_l2": 0.3883028104901314,
+      "median_relative_l2": 0.30290357768535614
+    },
+    {
+      "camera": "MVL",
+      "cosine_threshold": 0.9,
+      "stable_percent": 53.7962962962963,
+      "stable_std": 6.1598134164938285,
+      "mean_cosine": 0.8162277340888977,
+      "median_cosine": 0.9109616428613663,
+      "mean_relative_l2": 0.5216911919414997,
+      "median_relative_l2": 0.4214674271643162
+    },
+    {
+      "camera": "MVL",
+      "cosine_threshold": 0.95,
+      "stable_percent": 36.08641975308642,
+      "stable_std": 6.009623508706496,
+      "mean_cosine": 0.8162277340888977,
+      "median_cosine": 0.9109616428613663,
+      "mean_relative_l2": 0.5216911919414997,
+      "median_relative_l2": 0.4214674271643162
+    },
+    {
+      "camera": "MVL",
+      "cosine_threshold": 0.98,
+      "stable_percent": 11.222222222222221,
+      "stable_std": 5.796033806153457,
+      "mean_cosine": 0.8162277340888977,
+      "median_cosine": 0.9109616428613663,
+      "mean_relative_l2": 0.5216911919414997,
+      "median_relative_l2": 0.4214674271643162
+    },
+    {
+      "camera": "MVL",
+      "cosine_threshold": 0.99,
+      "stable_percent": 1.8950617283950617,
+      "stable_std": 2.1050740334916296,
+      "mean_cosine": 0.8162277340888977,
+      "median_cosine": 0.9109616428613663,
+      "mean_relative_l2": 0.5216911919414997,
+      "median_relative_l2": 0.4214674271643162
+    },
+    {
+      "camera": "MVR",
+      "cosine_threshold": 0.9,
+      "stable_percent": 70.9074074074074,
+      "stable_std": 6.861351598121379,
+      "mean_cosine": 0.8982062190771103,
+      "median_cosine": 0.9597894847393036,
+      "mean_relative_l2": 0.3699640668928623,
+      "median_relative_l2": 0.2826028298586607
+    },
+    {
+      "camera": "MVR",
+      "cosine_threshold": 0.95,
+      "stable_percent": 55.94444444444444,
+      "stable_std": 6.300862887314832,
+      "mean_cosine": 0.8982062190771103,
+      "median_cosine": 0.9597894847393036,
+      "mean_relative_l2": 0.3699640668928623,
+      "median_relative_l2": 0.2826028298586607
+    },
+    {
+      "camera": "MVR",
+      "cosine_threshold": 0.98,
+      "stable_percent": 33.96913580246914,
+      "stable_std": 5.182223896143961,
+      "mean_cosine": 0.8982062190771103,
+      "median_cosine": 0.9597894847393036,
+      "mean_relative_l2": 0.3699640668928623,
+      "median_relative_l2": 0.2826028298586607
+    },
+    {
+      "camera": "MVR",
+      "cosine_threshold": 0.99,
+      "stable_percent": 15.493827160493826,
+      "stable_std": 3.2879661437067274,
+      "mean_cosine": 0.8982062190771103,
+      "median_cosine": 0.9597894847393036,
+      "mean_relative_l2": 0.3699640668928623,
+      "median_relative_l2": 0.2826028298586607
+    },
+    {
+      "camera": "RV",
+      "cosine_threshold": 0.9,
+      "stable_percent": 72.66666666666667,
+      "stable_std": 5.932095553756151,
+      "mean_cosine": 0.9031587764620781,
+      "median_cosine": 0.9679828658699989,
+      "mean_relative_l2": 0.3464188389480114,
+      "median_relative_l2": 0.2505628224462271
+    },
+    {
+      "camera": "RV",
+      "cosine_threshold": 0.95,
+      "stable_percent": 60.72839506172839,
+      "stable_std": 7.051224906548904,
+      "mean_cosine": 0.9031587764620781,
+      "median_cosine": 0.9679828658699989,
+      "mean_relative_l2": 0.3464188389480114,
+      "median_relative_l2": 0.2505628224462271
+    },
+    {
+      "camera": "RV",
+      "cosine_threshold": 0.98,
+      "stable_percent": 41.24074074074074,
+      "stable_std": 5.953401179795852,
+      "mean_cosine": 0.9031587764620781,
+      "median_cosine": 0.9679828658699989,
+      "mean_relative_l2": 0.3464188389480114,
+      "median_relative_l2": 0.2505628224462271
+    },
+    {
+      "camera": "RV",
+      "cosine_threshold": 0.99,
+      "stable_percent": 25.962962962962962,
+      "stable_std": 4.868412394254816,
+      "mean_cosine": 0.9031587764620781,
+      "median_cosine": 0.9679828658699989,
+      "mean_relative_l2": 0.3464188389480114,
+      "median_relative_l2": 0.2505628224462271
+    }
+  ]
+}

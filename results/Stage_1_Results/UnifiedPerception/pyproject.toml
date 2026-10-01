@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unified-perception"
+version = "0.1.0"
+description = "Shared-DINOv2 perception flow: one backbone forward -> object detection + whole-scene action recognition."
+readme = "README.md"
+requires-python = ">=3.10"
+
+# Runtime Python deps. Heavy CV/DL wheels are expected to already be present in
+# the perception venv; versions below are conservative lower bounds. NOTE: the
+# `decord` frame reader and a system `ffmpeg` binary are also required at runtime.
+dependencies = [
+    "numpy>=1.24",
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "transformers>=4.40",
+    "decord>=0.6",
+    "opencv-python>=4.8",
+]
+
+[project.scripts]
+unified-perception = "unified_perception.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["unified_perception*"]

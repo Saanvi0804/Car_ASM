@@ -1,0 +1,103 @@
+# ============================================================
+# SentryMode Test Pipeline Configuration
+# ============================================================
+
+input:
+  source: "test_data/sample.mp4"
+  type: "auto"  # "auto" | "video" | "image" — auto-detects from extension
+
+backbone:
+  name: "dinov2_vits14"  # "dinov2_vits14" | "dinov3_vits16" | "dinov3_convnext_tiny"
+  device: "cuda"
+
+detector:
+  name: "yolo26"
+  model_variant: "yolo26s.pt"
+  confidence: 0.35
+  device: "cuda"
+  classes_of_interest:
+    person: 0
+    bicycle: 1
+    car: 2
+    motorcycle: 3
+    bus: 5
+    truck: 7
+    backpack: 24
+    handbag: 26
+    knife: 43
+    baseball_bat: 34
+    scissors: 76
+
+tracker:
+  name: "bytetrack"
+  confidence: 0.35
+  device: "cuda"
+  classes_of_interest:
+    person: 0
+    bicycle: 1
+    car: 2
+    motorcycle: 3
+    bus: 5
+    truck: 7
+    backpack: 24
+    handbag: 26
+    knife: 43
+    baseball_bat: 34
+    scissors: 76
+
+pose:
+  name: "yolo26_pose"
+  model_variant: "yolo26s-pose.pt"
+  confidence: 0.35
+  device: "cuda"
+  animal_pose_enabled: false
+
+depth:
+  name: "depth_anything_v2"
+  device: "cuda"
+  use_metric_model: true                # true = calibrated meters, false = relative (approximate)
+  relative_model_id: "depth-anything/Depth-Anything-V2-Small-hf"
+  metric_model_id: "depth-anything/Depth-Anything-V2-Metric-Outdoor-Small-hf"
+  max_depth_m: 20.0                     # only used when use_metric_model is false (linear scaling cap)
+
+zones:
+  ultra_near:
+    min_m: 0.0
+    max_m: 1.0
+    color: [0, 0, 255]       # red in BGR
+    label: "ULTRA-NEAR"
+  near:
+    min_m: 1.0
+    max_m: 5.0
+    color: [0, 165, 255]     # orange in BGR
+    label: "NEAR"
+  hazard:
+    min_m: 5.0
+    max_m: 10.0
+    color: [0, 255, 255]     # yellow in BGR
+    label: "HAZARD"
+  outside:
+    min_m: 10.0
+    max_m: 999.0
+    color: [0, 255, 0]       # green in BGR
+    label: "OUTSIDE"
+
+visualization:
+  show_bboxes: true
+  show_labels: true
+  show_track_ids: true
+  show_pose: true
+  show_depth_map: true
+  show_zone_labels: true
+  output_dir: "output/"
+  save_output: true
+  display_live: true
+  bbox_thickness: 2
+
+pipeline:
+  run_backbone_verification: true
+  run_detection: true
+  run_tracking: true
+  run_pose: true
+  run_depth: true
+  run_zone_assignment: true

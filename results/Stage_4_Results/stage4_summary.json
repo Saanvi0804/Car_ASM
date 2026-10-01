@@ -1,0 +1,51 @@
+{
+  "stage": "Stage 4 - Downstream Detection and Action Evaluation",
+  "dataset": "WoodScape",
+  "model": "DINOv2 ViT-S/14",
+  "model_id": "facebook/dinov2-small",
+  "resolution": "640x640",
+  "patch_grid": "45x45",
+  "patch_tokens": 2025,
+  "embedding_dimension": 384,
+  "cameras": [
+    "FV",
+    "RV",
+    "MVL",
+    "MVR"
+  ],
+  "pairs_per_camera": 32,
+  "change_detector": "mean absolute RGB difference per 14x14 patch",
+  "pixel_diff_threshold": 0.08,
+  "stage2_reference_cosine": 0.95,
+  "downstream": {
+    "detection": "Professor UnifiedPerception shared Adapter-v2 + YOLO26",
+    "action": "Professor UnifiedPerception K400 linear-probe action head"
+  },
+  "outputs": [
+    "stage4_frame_results.csv",
+    "stage4_summary.csv",
+    "stage4_action_results.csv",
+    "stage4_summary.json"
+  ],
+  "scientific_note": "The selective path is an approximate reduced-token implementation of global DINOv2 attention. Token reuse is not equivalent to achieved runtime speedup. Detection and action outputs are compared against the full DINOv2 baseline.",
+  "overall": {
+    "mean_reused_percent": 74.75887345679013,
+    "mean_changed_percent": 25.241126543209877,
+    "mean_selected_tokens": 512.1328125,
+    "mean_token_fraction": 0.2527802628331688,
+    "theoretical_token_reduction_percent": 74.72197371668312,
+    "mean_patch_cosine": 0.9036612845957279,
+    "mean_relative_l2": 0.36781386914663017,
+    "mean_baseline_detections": 5.8828125,
+    "mean_selective_detections": 5.0078125,
+    "mean_baseline_match_rate": 0.715166360429408,
+    "mean_selective_match_rate": 0.8335385317807193,
+    "mean_matched_iou": 0.8102233729363504,
+    "mean_detection_conf_abs_diff": 0.08178410529287358,
+    "mean_full_backbone_seconds": 0.05029520481249339,
+    "mean_selective_backbone_seconds": 0.020840638601565153,
+    "backbone_time_ratio": 2.413323592143485,
+    "action_top1_agreement": 0.25,
+    "action_conf_abs_diff": 0.1595777440816164
+  }
+}
