@@ -1,0 +1,20 @@
+{
+  "model": "facebook/dinov2-small",
+  "target_fps": 5.0,
+  "stage5a_image_size": 640,
+  "dino_size": 630,
+  "patch_size": 14,
+  "grid_size": 45,
+  "threshold": {
+    "base": 0.75,
+    "motion_alpha": 0.1,
+    "min": 0.7,
+    "max": 0.9
+  },
+  "motion_mapping": {
+    "flow_scale": 0.984375,
+    "method": "scale flow displacement only, then nearest patch shift",
+    "zero_flow_identity_verified": true
+  },
+  "stage5a_motion_file": "/kaggle/input/datasets/theramiway/stage5a-motion-results/Stage5A_Motion_Results/stage5_patch_motion_vectors.npz"
+}

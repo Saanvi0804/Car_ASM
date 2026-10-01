@@ -1,0 +1,43 @@
+{
+  "stage": "Stage 5B - Corrected Motion-Compensated DINOv2 Matching",
+  "dataset": "Nexar Collision Prediction",
+  "videos": 4,
+  "frame_pairs": 683,
+  "dino_model": "facebook/dinov2-small",
+  "target_fps": 5.0,
+  "dino_input": [
+    630,
+    630
+  ],
+  "stage5a_flow_size": [
+    640,
+    640
+  ],
+  "patch_size": 14,
+  "patch_grid": [
+    45,
+    45
+  ],
+  "num_patches": 2025,
+  "mean_same_position_similarity": 0.8736184034305645,
+  "mean_motion_comp_similarity": 0.8845386101944729,
+  "mean_similarity_improvement": 0.01092020628983466,
+  "mean_same_position_reuse_percent": 79.93536142291633,
+  "mean_motion_comp_reuse_percent": 82.63586573396236,
+  "mean_reuse_gain_percent": 2.7005043110460387,
+  "mean_corrected_moved_patch_percent": 17.822822334291345,
+  "mean_dynamic_threshold": 0.7780582870780811,
+  "threshold": {
+    "base": 0.75,
+    "motion_alpha": 0.1,
+    "min": 0.7,
+    "max": 0.9
+  },
+  "runtime_seconds": 271.23571157455444,
+  "correction": {
+    "previous_mapping": "(source_center + flow) * (630/640)",
+    "corrected_mapping": "source_center + flow * (630/640)",
+    "target_assignment": "nearest 14x14 DINO patch",
+    "zero_flow_identity_verified": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "repo_id": "nexar-ai/nexar_collision_prediction",
+  "selected_videos": [
+    "train/negative/01040.mp4",
+    "train/negative/01041.mp4",
+    "train/negative/01042.mp4",
+    "train/negative/01043.mp4"
+  ],
+  "source_fps": 30.0,
+  "target_fps": 5.0,
+  "image_size": 640,
+  "patch_size": 14,
+  "grid_size": 45,
+  "num_patches": 2025,
+  "optical_flow": "Farneback",
+  "note": "No DINOv2 token reuse or speedup is claimed in Stage 5A."
+}

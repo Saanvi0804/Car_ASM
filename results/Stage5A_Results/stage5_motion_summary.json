@@ -1,0 +1,24 @@
+{
+  "stage": "Stage 5A - 5 FPS Motion Analysis",
+  "dataset": "Nexar Collision Prediction",
+  "num_videos": 4,
+  "total_frame_pairs": 683,
+  "source_fps_expected": 30.0,
+  "target_fps": 5.0,
+  "image_size": 640,
+  "patch_size": 14,
+  "patch_grid": [
+    45,
+    45
+  ],
+  "num_patch_tokens": 2025,
+  "motion_method": "Farneback dense optical flow",
+  "patch_motion_method": "median pixel flow within each 14x14 patch",
+  "motion_threshold_pixels": 1.0,
+  "mean_motion": 3.8846396596728665,
+  "median_motion": 0.13594473898410797,
+  "max_motion": 169.7447509765625,
+  "mean_moving_patch_percent": 36.23830956383421,
+  "median_moving_patch_percent": 37.97530864197531,
+  "runtime_seconds": 564.953409910202
+}
